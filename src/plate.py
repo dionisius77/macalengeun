@@ -27,7 +27,7 @@ class Plate(Resource):
         # height = int(img.shape[0] * scale_percent / 100)
         # dim = (width, height)
         # img = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
-        cv2.imshow('original', img)
+        # cv2.imshow('original', img)
         # cv2.imwrite(temp_folder + '1 - original.png', img)
 
         # hsv transform - value = gray image
@@ -60,7 +60,7 @@ class Plate(Resource):
 
         # thresholding
         thresh = cv2.adaptiveThreshold(blur, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 19, 9)
-        cv2.imshow('thresh', thresh)
+        # cv2.imshow('thresh', thresh)
         # cv2.imwrite(temp_folder + '7 - thresh.png', thresh)
 
         # cv2.findCountours() function changed from OpenCV3 to OpenCV4: now it have only two parameters instead of 3
