@@ -5,6 +5,7 @@ import cv2
 import numpy as np
 import math
 import argparse
+import base64
 
 class Plate(Resource):
     def get(self):
@@ -288,5 +289,6 @@ class Plate(Resource):
 
         cv2.waitKey(0)
         return {
-            "possibleLine": possibleCharsData
+            "possibleLine": possibleCharsData,
+            "imageData": base64.b64encode(thresh)
         }
