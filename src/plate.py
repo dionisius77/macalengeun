@@ -291,8 +291,8 @@ class Plate(Resource):
         _, buffer = cv2.imencode('.jpg', thresh)
         base64Image = base64.b64encode(buffer)
 
-        print(base64Image)
+        # print(base64Image)
         return {
             'possibleLine': possibleCharsData,
-            # 'imageData': base64Image
+            'imageData': base64Image
         }
