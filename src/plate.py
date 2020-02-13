@@ -9,7 +9,7 @@ import base64
 
 class Plate(Resource):
     def get(self):
-        print("start plat nomor")
+        # print("start plat nomor")
 
         # this folder is used to save the image
         # temp_folder = 'C:\\Users\\PC\\Desktop\\temp\\'
@@ -67,7 +67,7 @@ class Plate(Resource):
         # cv2.findCountours() function changed from OpenCV3 to OpenCV4: now it have only two parameters instead of 3
         cv2MajorVersion = cv2.__version__.split(".")[0]
         # check for contours on thresh
-        print(cv2MajorVersion)
+        # print(cv2MajorVersion)
         if int(cv2MajorVersion) >= 4:
             contours, hierarchy = cv2.findContours(thresh, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
         else:
@@ -112,7 +112,7 @@ class Plate(Resource):
             ctrs.append(char.contour)
 
         # using values from ctrs to draw new contours
-        print(len(ctrs))
+        # print(len(ctrs))
         cv2.drawContours(imageContours, ctrs, -4, (255, 255, 255))
         # cv2.imshow("contoursPossibleChars", imageContours)
         # cv2.imwrite(temp_folder + '9 - contoursPossibleChars.png', imageContours)
@@ -287,8 +287,12 @@ class Plate(Resource):
                 # cv2.imshow("plate", plates_list[i].Plate)
                 # cv2.imwrite(temp_folder + '13 - plate.png', plates_list[i].Plate)
 
-        cv2.waitKey(0)
+        # cv2.waitKey(0)
+        _, buffer = cv2.imencode('.jpg', thresh)
+        base64Image = base64.b64encode(buffer)
+
+        print(base64Image)
         return {
-            "possibleLine": possibleCharsData,
-            "imageData": base64.b64encode(thresh)
+            'possibleLine': possibleCharsData,
+            # 'imageData': base64Image
         }
