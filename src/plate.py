@@ -289,9 +289,9 @@ class Plate(Resource):
 
         # cv2.waitKey(0)
         _, buffer = cv2.imencode('.jpg', thresh)
-        base64Image = base64.b64encode(buffer)
+        bitImage = base64.urlsafe_b64encode(buffer)
+        base64Image = str(bitImage, "utf-8")
 
-        # print(base64Image)
         return {
             'possibleLine': possibleCharsData,
             'imageData': base64Image
