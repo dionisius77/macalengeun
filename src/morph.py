@@ -7,11 +7,11 @@ import json
 import random as rng
 
 class MorphCanny(Resource):
-    def get(self, threshold=25):
+    def get(self, threshold=10):
         
-        image = cv.imread("src/tangan_1.jpg",1)
+        image = cv.imread("src/dion2.jpeg",1)
 
-        if image.shape[1] > 2000:
+        if image.shape[1] > 700:
             scale_percent = 18 # percent of original size
         else:
             scale_percent = 100
@@ -52,7 +52,7 @@ class RectProcessing:
         gray = cv.cvtColor(blur, cv.COLOR_BGR2GRAY)
 
 
-        thresh = cv.threshold(gray, 150, 200, cv.THRESH_BINARY_INV)[1]
+        thresh = cv.threshold(gray, 180, 181, cv.THRESH_BINARY_INV)[1]
 
         cnts = cv.findContours(thresh, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
         cnts = cnts[0] if len(cnts) == 2 else cnts[1]
