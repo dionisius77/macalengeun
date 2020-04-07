@@ -11,7 +11,7 @@ api = Api(app)
 api.add_resource(PalmCanny, '/canny')
 api.add_resource(MorphCanny, '/morphological')
 api.add_resource(Sobel, '/sobel')
-api.add_resource(Plate, '/plate')
+api.add_resource(Plate, '/palmreading')
 
 if __name__ == '__main__':
     app.run(debug=True)
